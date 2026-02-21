@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -13,7 +14,8 @@ func main() {
 		fmt.Print("Pokedex > ")
 
 		if scanner.Scan() {
-			fmt.Printf("Testing: %s\n", scanner.Text())
+			cmd := cleanInput(scanner.Text())[0]
+			fmt.Printf("Your command was: %v\n", cmd)
 		}
 
 		if err := scanner.Err(); err != nil {
@@ -22,3 +24,13 @@ func main() {
 	}
 }
 
+func cleanInput(text string) []string {
+	//Lowercase the input
+	lowered := strings.ToLower(text)
+
+	//Split input into words based on whitespace
+	cleaned := strings.Fields(lowered)
+
+	//Return first word
+	return cleaned
+}

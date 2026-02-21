@@ -5,7 +5,7 @@
 *.dylib
 
 *.test
-
+*.log
 .env
 
 pokedexcli
